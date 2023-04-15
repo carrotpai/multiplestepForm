@@ -33,22 +33,39 @@ function MultistepFormContainer() {
 
   return (
     <MultiformContext.Provider value={{ form, setForm }}>
-      <MultistepForm steps={STEPS}>
-        <Routes>
-          <Route
-            element={
-              <FirstStepForm
-                handleNext={handleNext}
-                handleBack={handleBack}
-                steps={STEPS}
-              />
-            }
-            path={'/form'}
-          ></Route>
-        </Routes>
-        <Route element={<SecondStepForm />} path={'/second'}></Route>
-        <Route element={<ThirdStepForm />} path={'/third'}></Route>
-      </MultistepForm>
+      <MultistepForm steps={STEPS} />
+      <Routes>
+        <Route
+          index
+          element={
+            <FirstStepForm
+              handleNext={handleNext}
+              handleBack={handleBack}
+              steps={STEPS}
+            />
+          }
+        />
+        <Route
+          element={
+            <SecondStepForm
+              handleNext={handleNext}
+              handleBack={handleBack}
+              steps={STEPS}
+            />
+          }
+          path={'/second'}
+        />
+        <Route
+          element={
+            <ThirdStepForm
+              handleNext={handleNext}
+              handleBack={handleBack}
+              steps={STEPS}
+            />
+          }
+          path={'/third'}
+        />
+      </Routes>
     </MultiformContext.Provider>
   );
 }

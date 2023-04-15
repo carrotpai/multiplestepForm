@@ -6,7 +6,7 @@ import MultistepFormContainer from './components/MultistepForm/MultistepFormCont
 function App() {
   return (
     <div className='App'>
-      <MultistepFormContainer></MultistepFormContainer>
+      <MultistepFormContainer />
     </div>
   );
 }

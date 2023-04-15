@@ -34,6 +34,7 @@ function FirstStepForm({ handleBack, handleNext, steps }: IStepForm) {
         };
       })
     );
+    handleNext();
     navigate('/second');
   };
 
@@ -72,18 +73,20 @@ function FirstStepForm({ handleBack, handleNext, steps }: IStepForm) {
         />
         <TextField variant='outlined' placeholder={'field 2'}></TextField>
         <TextField variant='outlined' placeholder={'field 3'}></TextField>
-        <Button type={'submit'}>123</Button>
         <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
           <Button
             color='inherit'
             disabled={form.selectedIndex === 0}
-            onClick={handleBack}
+            onClick={() => {
+              handleBack();
+              navigate(-1);
+            }}
             sx={{ mr: 1 }}
           >
             Back
           </Button>
           <Box sx={{ flex: '1 1 auto' }} />
-          <Button onClick={handleNext}>
+          <Button type={'submit'}>
             {form.selectedIndex === steps.length - 1 ? 'Finish' : 'Next'}
           </Button>
         </Box>
